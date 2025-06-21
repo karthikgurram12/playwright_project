@@ -1,0 +1,80 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "orangehrm-login;successful-login-with-valid-credentials",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 628571416
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on the OrangeHRM login page",
+            "match": {
+              "location": "features/step-definitions/login.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4356574958
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I login with username \"Admin\" and password \"admin123\"",
+            "match": {
+              "location": "features/step-definitions/login.steps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 907191750
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I should see the dashboard",
+            "match": {
+              "location": "features/step-definitions/login.steps.ts:19"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 2040829415,
+              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeFalsy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mtrue\u001b[39m\n    at Proxy.<anonymous> (/Users/karthikgurram/Documents/playwright-framework/node_modules/playwright/lib/matchers/expect.js:221:24)\n    at CustomWorld.<anonymous> (/Users/karthikgurram/Documents/playwright-framework/features/step-definitions/login.steps.ts:22:19)\n    at fulfilled (/Users/karthikgurram/Documents/playwright-framework/features/step-definitions/login.steps.ts:5:58)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)\n    at process.topLevelDomainCallback (node:domain:160:15)\n    at process.callbackTrampoline (node:internal/async_hooks:128:24)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1575566334
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "orangehrm-login",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "OrangeHRM Login",
+    "tags": [],
+    "uri": "features/login.feature"
+  }
+]

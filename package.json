@@ -1,15 +1,7 @@
 {
-  "name": "playwright-framework",
-  "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@playwright/test": "^1.53.1"
+    "test": "npx cucumber-js --format json:cucumber-report.json",
+    "report": "ts-node support/generate-html-report.ts",
+    "test:html": "npm run test || true && npm run report"
   }
 }
