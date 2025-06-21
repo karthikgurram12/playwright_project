@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 628571416
+              "duration": 646456666
             }
           },
           {
@@ -26,8 +26,9 @@
               "location": "features/step-definitions/login.steps.ts:9"
             },
             "result": {
-              "status": "passed",
-              "duration": 4356574958
+              "status": "failed",
+              "duration": 5003083333,
+              "error_message": "Error: function timed out, ensure the promise resolves within 5000 milliseconds\n    at Timeout.<anonymous> (/Users/karthikgurram/Documents/playwright-framework/node_modules/@cucumber/cucumber/src/time.ts:52:14)\n    at listOnTimeout (node:internal/timers:594:17)\n    at processTimers (node:internal/timers:529:7)"
             }
           },
           {
@@ -39,8 +40,8 @@
               "location": "features/step-definitions/login.steps.ts:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 907191750
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
@@ -52,9 +53,8 @@
               "location": "features/step-definitions/login.steps.ts:19"
             },
             "result": {
-              "status": "failed",
-              "duration": 2040829415,
-              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeFalsy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mtrue\u001b[39m\n    at Proxy.<anonymous> (/Users/karthikgurram/Documents/playwright-framework/node_modules/playwright/lib/matchers/expect.js:221:24)\n    at CustomWorld.<anonymous> (/Users/karthikgurram/Documents/playwright-framework/features/step-definitions/login.steps.ts:22:19)\n    at fulfilled (/Users/karthikgurram/Documents/playwright-framework/features/step-definitions/login.steps.ts:5:58)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)\n    at process.topLevelDomainCallback (node:domain:160:15)\n    at process.callbackTrampoline (node:internal/async_hooks:128:24)"
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
@@ -62,7 +62,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1575566334
+              "duration": 309971625
             }
           }
         ],
