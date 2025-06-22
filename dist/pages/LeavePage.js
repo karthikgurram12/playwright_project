@@ -9,25 +9,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginPage = void 0;
+exports.LeavePage = void 0;
 const BasePage_1 = require("./BasePage");
-class LoginPage extends BasePage_1.BasePage {
-    gotoLoginPage() {
+class LeavePage extends BasePage_1.BasePage {
+    navigateToApply() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.page.goto('https://opensource-demo.orangehrmlive.com/');
+            yield this.click('a[href*="leave"]');
+            yield this.clickByText('Apply');
         });
     }
-    login(username, password) {
+    applyLeave(type) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.fill('input[name="username"]', username);
-            yield this.fill('input[name="password"]', password);
-            yield this.click('button[type="submit"]');
+            yield this.selectByText('select', type);
+            const today = new Date().toISOString().split('T')[0];
+            yield this.fill('input[placeholder="yyyy-mm-dd"]', today);
+            yield this.clickByText('Apply');
         });
     }
-    getErrorMessage() {
+    isLeavePending() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.getText('.oxd-alert-content-text');
+            yield this.clickByText('My Leave');
+            return yield this.isVisible('text=Pending Approval');
         });
     }
 }
-exports.LoginPage = LoginPage;
+exports.LeavePage = LeavePage;

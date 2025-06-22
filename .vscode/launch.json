@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Cucumber Feature",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
+      "args": [
+        "${file}",                       // runs current file
+        "--require", "features/step-definitions/**/*.ts",
+        "--require", "support/**/*.ts",
+        "--require-module", "ts-node/register",
+        "--format", "progress"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}

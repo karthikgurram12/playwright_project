@@ -1,13 +1,8 @@
-import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class LoginPage extends BasePage {
-  constructor(page: Page) {
-    super(page);
-  }
-
   async gotoLoginPage() {
-    await this.page.goto('https://opensource-demo.orangehrmlive.com');
+    await this.page.goto('https://opensource-demo.orangehrmlive.com/');
   }
 
   async login(username: string, password: string) {
@@ -16,7 +11,7 @@ export class LoginPage extends BasePage {
     await this.click('button[type="submit"]');
   }
 
-  async isDashboardVisible(): Promise<boolean> {
-    return this.waitUntilVisible('h6:has-text("Dashboard")');
+  async getErrorMessage(): Promise<string> {
+    return await this.getText('.oxd-alert-content-text');
   }
 }

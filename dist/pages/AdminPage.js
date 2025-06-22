@@ -9,25 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginPage = void 0;
+exports.AdminPage = void 0;
 const BasePage_1 = require("./BasePage");
-class LoginPage extends BasePage_1.BasePage {
-    gotoLoginPage() {
+class AdminPage extends BasePage_1.BasePage {
+    goToAdmin() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.page.goto('https://opensource-demo.orangehrmlive.com/');
+            yield this.click('a[href*="/admin/viewAdminModule"]');
         });
     }
-    login(username, password) {
+    searchUser(username) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.fill('input[name="username"]', username);
-            yield this.fill('input[name="password"]', password);
-            yield this.click('button[type="submit"]');
+            yield this.fill('input[placeholder="Username"]', username);
+            yield this.click('button:has-text("Search")');
         });
     }
-    getErrorMessage() {
+    isUserPresent(username) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.getText('.oxd-alert-content-text');
+            return yield this.isVisible(`text=${username}`);
         });
     }
 }
-exports.LoginPage = LoginPage;
+exports.AdminPage = AdminPage;

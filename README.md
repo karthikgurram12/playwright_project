@@ -51,3 +51,11 @@ This does:
 npm run test	-> Runs all tests using Cucumber
 npm run report	-> Generates the HTML report only
 npm run test:html	-> Runs tests + generates HTML report
+
+// to run regression suite (4 tests) -> npx cucumber-js --tags "@regression"
+// to run smoke suite (2 tests) -> npx cucumber-js --tags "@smoke"
+
+// run tests in parallel - npx cucumber-js --tags "@smoke" --parallel 2
+// npx cucumber-js --tags "@regression" --parallel 4
+
+// run sequence is decided by how we keep or align the features files, if we want to keep anything at first, just name it like 1_feature_file_name

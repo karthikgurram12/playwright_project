@@ -8,39 +8,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const cucumber_1 = require("@cucumber/cucumber");
 const test_1 = require("@playwright/test");
 const LoginPage_1 = require("../../pages/LoginPage");
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
+const DashboardPage_1 = require("../../pages/DashboardPage");
 (0, cucumber_1.Given)('I am on the OrangeHRM login page', function () {
     return __awaiter(this, void 0, void 0, function* () {
-        const loginPage = new LoginPage_1.LoginPage(this.page);
-        yield loginPage.gotoLoginPage();
+        yield new LoginPage_1.LoginPage(this.page).gotoLoginPage();
     });
 });
 (0, cucumber_1.When)('I login with username {string} and password {string}', function (username, password) {
     return __awaiter(this, void 0, void 0, function* () {
-        const loginPage = new LoginPage_1.LoginPage(this.page);
-        yield loginPage.login(username, password);
+        yield new LoginPage_1.LoginPage(this.page).login(username, password);
     });
 });
-(0, cucumber_1.Then)('I should see the dashboard', function () {
+(0, cucumber_1.Then)('I should see an error message {string}', function (message) {
     return __awaiter(this, void 0, void 0, function* () {
-        const loginPage = new LoginPage_1.LoginPage(this.page);
-        const visible = yield loginPage.isDashboardVisible();
-        if (!visible) {
-            const screenshotDir = path_1.default.join('screenshots');
-            const screenshotPath = path_1.default.join(screenshotDir, `dashboard-failure-${Date.now()}.png`);
-            const ss = yield this.page.screenshot();
-            fs_1.default.mkdirSync(screenshotDir, { recursive: true });
-            fs_1.default.writeFileSync(screenshotPath, ss);
-            console.log(`❌ Screenshot saved to: ${screenshotPath}`);
-        }
-        (0, test_1.expect)(visible).toBeTruthy();
+        const actual = yield new LoginPage_1.LoginPage(this.page).getErrorMessage();
+        (0, test_1.expect)(actual).toContain(message);
+    });
+});
+(0, cucumber_1.When)('I click on the profile dropdown', function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield this.page.click('.oxd-userdropdown-name');
+    });
+});
+(0, cucumber_1.When)('I click on {string}', function (option) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield this.page.click(`text=${option}`);
+    });
+});
+(0, cucumber_1.Then)('I should be redirected to the login page', function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        const dashboard = new DashboardPage_1.DashboardPage(this.page);
+        (0, test_1.expect)(yield dashboard.isOnLoginPage()).toBeTruthy();
     });
 });
